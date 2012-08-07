@@ -7,7 +7,7 @@ Capistrano::Configuration.instance.load do
     It defaults to RAILS_ENV.log
     DESC
     task :tail, :roles => :app do
-      ENV["LOGFILE"] ||= "#{rails_env}.log"
+      ENV["LOGFILE"] ||= "#{fetch(:rails_env, 'production')}.log"
       begin
         stream "tail -f #{shared_path}/log/#{ENV["LOGFILE"]}"
       rescue Interrupt
