@@ -1,7 +1,5 @@
-require "capistrano-info/version"
-
 module Capistrano
   module Info
-    # Your code goes here...
+    autoload :VERSION, "capistrano-info/version"
   end
 end
