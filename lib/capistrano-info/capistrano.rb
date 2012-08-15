@@ -22,14 +22,19 @@ Capistrano::Configuration.instance.load do
       rel = current_release.split('/').pop
       rel_date = Time.local(*rel.unpack("a4a2a2a2a2a2"))
 
-    puts <<-EOT
+      version_file = "#{current_path}/VERSION"
+      version = capture("test -e #{version_file} && cat #{version_file}").chomp
+
+      puts <<-EOT
 
     AppName: #{fetch(:application)}
     Version: #{rev}
     Release: #{rel}
-    Deploy:  #{rel_date}
 
-    EOT
+    Deploy:  #{rel_date}
+    Version: #{version}
+
+      EOT
     end
 
     desc "Display the uname"
