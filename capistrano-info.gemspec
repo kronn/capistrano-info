@@ -21,5 +21,5 @@ EOT
   gem.require_paths = ["lib"]
   gem.version       = Capistrano::Info::VERSION
 
-  gem.add_dependency 'capistrano', '~> 2.9'
+  gem.add_dependency 'capistrano', '>= 2.9.0', '< 3.0.0'
 end
