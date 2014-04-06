@@ -23,7 +23,7 @@ Capistrano::Configuration.instance.load do
       rel_date = Time.local(*rel.unpack("a4a2a2a2a2a2"))
 
       version_file = "#{current_path}/VERSION"
-      version = capture("test -e #{version_file} && cat #{version_file}").chomp
+      version = capture("test -r #{version_file} && cat #{version_file}").chomp
 
       puts <<-EOT
 
