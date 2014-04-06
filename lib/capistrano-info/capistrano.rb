@@ -25,16 +25,24 @@ Capistrano::Configuration.instance.load do
       version_file = "#{current_path}/VERSION"
       version = capture("test -r #{version_file} && cat #{version_file}").chomp
 
-      puts <<-EOT
+      message = <<-EOT
 
     AppName: #{fetch(:application)}
     Version: #{rev}
     Release: #{rel}
 
     Deploy:  #{rel_date}
+      EOT
+
+      message << <<-EOT if version != ""
     Version: #{version}
+      EOT
+
+      message << <<-EOT
 
       EOT
+
+      puts message
     end
 
     desc "Display the uname"
